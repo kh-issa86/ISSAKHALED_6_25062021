@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+require('dotenv').config()
 
 // In this middleware:
 // Since many problems can occur, we put everything inside a try ... catch block;
@@ -12,7 +13,7 @@ const jwt = require('jsonwebtoken');
 module.exports = (req, res, next) => {
   try {
     const token = req.headers.authorization.split(' ')[1];
-    const decodedToken = jwt.verify(token, 'h&^%yut876&^76');
+    const decodedToken = jwt.verify(token, process.env.KEYTOKEN);
     const userId = decodedToken.userId;
     if (req.body.userId && req.body.userId !== userId) {
       throw 'Invalid user ID';
