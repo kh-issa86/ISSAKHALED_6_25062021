@@ -20,6 +20,7 @@ mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_MP}@${pr
     .then(() => console.log('Connexion à MongoDB réussie !'))
     .catch(() => console.log('Connexion à MongoDB échouée !'));
 
+// This part configures and authorizes Multi-Origin requests; defines Headers & Methods
 app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader(
@@ -34,12 +35,14 @@ app.use((req, res, next) => {
 });
 
 
-
+// Define the json function as global middleware for the application
 app.use(bodyParser.json());
 
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
+// Registration of the router for all requests made to / api / sauces / user.
 app.use('/api/sauces', saucesRoutes);
 app.use('/api/auth', userRoutes);
 
+// Used to export the created application (in this case, it becomes accessible for server.js)
 module.exports = app;
