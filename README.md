@@ -12,7 +12,7 @@ This is a project to create a secure API for a gastronomic reviews application, 
 
 [configuration]
 
-    To start the server, you need to run server.js, available in the backend folder. From 'backend' run the command:
+    To start the server, available in the backend folder. From 'backend' run the command:
 
     npm start
 
