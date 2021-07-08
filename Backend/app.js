@@ -2,7 +2,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-
+require('dotenv').config()
 const path = require('path');
 
 // Add routes for identification & authentication
@@ -14,7 +14,7 @@ const app = express();
 
 
 // Connection to the MongoDB database
-mongoose.connect('mongodb+srv://Khaled_Issa:tfuM8ETFbqw2C7y@sopekocko.nnoff.mongodb.net/sopekocko?retryWrites=true&w=majority',
+mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_MP}@${process.env.DB_NAME}.nnoff.mongodb.net/sopekocko?retryWrites=true&w=majority`,
     { useNewUrlParser: true,
         useUnifiedTopology: true })
     .then(() => console.log('Connexion à MongoDB réussie !'))
