@@ -1,7 +1,6 @@
 // import packages
 const mongoose = require('mongoose');
 const uniqueValidator = require('mongoose-unique-validator');
-require('dotenv').config()
 
 // we create a data schema which contains the desired fields for each User, Email and Oblogatory password.
 

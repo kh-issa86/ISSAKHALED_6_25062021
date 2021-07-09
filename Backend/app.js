@@ -2,12 +2,14 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-require('dotenv').config()
+require('dotenv').config() //separate secrets from my source code
 const path = require('path');
 
 // Add routes for identification & authentication
 const saucesRoutes = require('./routes/sauces');
 const userRoutes = require('./routes/user');
+var session = require('express-session') // To ensure that cookies do not open your application to attacks
+const helmet = require("helmet"); // For security (protect sql & xms injection disable some headers)
 
 // initialize the app variable which will contain 'express'
 const app = express();
@@ -33,6 +35,17 @@ app.use((req, res, next) => {
     );
     next();
 });
+
+app.use(helmet());
+app.set("trust proxy", 1);
+app.use(
+  session({
+  secret: 'macOS catalina',
+  resave: false,
+  saveUninitialized: true,
+})
+);
+
 
 
 // Define the json function as global middleware for the application
