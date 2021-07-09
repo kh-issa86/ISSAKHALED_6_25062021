@@ -1,6 +1,7 @@
+// import packages
 var passwordValidator = require('password-validator');
  
-// Create a schema
+// Create a password schema
 var schema = new passwordValidator();
  
 // Add properties to it
@@ -13,7 +14,7 @@ schema
 .has().not().spaces()                           // Should not have spaces
 .is().not().oneOf(['Passw0rd', 'Password123']); // Blacklist these values
  
-//enviar
+// Module export
 module.exports = (req, res, next) => {
     if (!schema.validate(req.body.password)) {
         return res.status(400).json({ error: 'Mot de passe pas assez fort! ' + schema.validate(req.body.password, { list: true }) });
