@@ -2,7 +2,7 @@
 
 [presentation]
 
-This is a project to create a secure API for a gastronomic reviews application, it contains:
+    This is a project to create a secure API for a gastronomic reviews application, it contains:
 
     An authentication system
     A request for a list of sauces on the main page
@@ -12,6 +12,14 @@ This is a project to create a secure API for a gastronomic reviews application, 
 
 [configuration]
 
+    You must load the interface (GUI) from the frontend folder. 
+    From 'frontend' run the command:
+    
+    1- npm install
+    2- npm start
+
+    This should be running an instance of the server on port 4200 of the host machine.
+
     To start the server, available in the backend folder. 
     From 'backend' run the command:
 
@@ -19,17 +27,12 @@ This is a project to create a secure API for a gastronomic reviews application, 
 
 This should run an instance of the server on port 3000 of the host machine.
 
-    You must also load the interface (GUI) from the frontend folder. 
-    From 'frontend' run the command:
 
-    npm start
-
-This should be running an instance of the server on port 4200 of the host machine.
 
 [use]
 
     Once all the modules are loaded / compiled;
 
-    From your internet browser, please go to the following site: http: // localhost: 4200 /
+    From your internet browser, please go to the following site: http://localhost:4200 /
 
 
