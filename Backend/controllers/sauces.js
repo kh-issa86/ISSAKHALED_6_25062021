@@ -91,20 +91,26 @@ exports.getAllSauces = (req, res, next) => {
 
 
 
-exports.likeSauce = (req, res, next) => {
-  let uid = req.body.userId, like = req.body.like;
+// Fonction Like/Dislike
 
-  Sauce.findOne({ _id: req.params.id }).exec(function (error, sauce){
+exports.likeSauce = (req, res, next) => {
+  let uid = req.body.userId, like = req.body.like;// First, we get the userId & like responses from the frontend.
+
+  Sauce.findOne({ _id: req.params.id }).exec(function (error, sauce){// Then we get the params.id to find the sauce concerned by the Like / Dislike via findOne.
+    
+    // Then we create variables in the msg, uiL, uiD function
     let msg = "", uiL = sauce.usersLiked.indexOf(uid), uiD = sauce.usersDisliked.indexOf(uid);
 
+    // For uiL and uiD we retrieve in the usersLiked & usersDisliked tables to find out if they exist in the event of a choice being canceled.
     if(like == 0 && uiL >-1){
 
       sauce.likes--;
       sauce.usersLiked.splice(uiL,1);
-      msg = "Unliked !";
+      msg = "Unliked !";// then we modify the message that will be displayed when calling save.
+
 
     } else if(like == 0 && uiD >-1){
-
+    // If the user cancels a choice, then we remove his userID from the corresponding table & we add or remove 1 from the corresponding counter
       sauce.dislikes--;
       sauce.usersDisliked.splice(uiD,1);
       msg = "Undisliked !";
@@ -113,7 +119,10 @@ exports.likeSauce = (req, res, next) => {
 
     if(like == 1){
 
-      sauce.likes++;
+      sauce.likes++; // we increment the corresponding counter (likes), then we modify the message that will be displayed when calling save.
+
+    // If the user likes a sauce and the usersLiked array is empty, we create an entry, otherwise we add this to the array,
+
       if (sauce.usersLiked.length == 0){
         sauce.usersLiked=[uid];
 
@@ -125,7 +134,9 @@ exports.likeSauce = (req, res, next) => {
 
     if(like == -1){
 
-      sauce.dislikes++;
+      sauce.dislikes++; // we increment the corresponding counter (dislikes), then we modify the message which will be displayed when calling save.
+
+    // If the user does not like a sauce, and the usersDisliked array is empty, we create an entry, otherwise we add this to the array.
       if (sauce.usersDisliked.length == 0){
         sauce.usersDisliked=[uid];
       } else{
@@ -137,7 +148,8 @@ exports.likeSauce = (req, res, next) => {
 
     sauce.save()
       .then(() => res.status(201).json({ message: msg}))
-      .catch(error => res.status(400).json({ error }));
+      .catch(error => res.status(400).json({ error })); // returning errors with the error code on failure.
+
 
   });
 };
