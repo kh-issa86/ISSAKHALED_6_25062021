@@ -13,20 +13,20 @@
 [configuration]
 
     You must load the interface (GUI) from the frontend folder. 
-    From 'frontend' run the command:
+    From 'frontend' run the commands:
     
     1- npm install
     2- npm start
 
-    This should be running an instance of the server on port 4200 of the host machine.
+    This should run the app on port 4200 of the host machine.
 
     To start the server, available in the backend folder. 
-    From 'backend' run the command:
+    From 'backend' run the commands:
 
     1- npm install
     2- npm start
 
-This should run an instance of the server on port 3000 of the host machine.
+This should run the server on port 3000 of the host machine.
 
 
 
