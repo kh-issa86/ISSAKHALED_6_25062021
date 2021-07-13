@@ -26,7 +26,7 @@
     1- npm install
     2- npm start
 
-This should run the server on port 3000 of the host machine.
+    This should run the server on port 3000 of the host machine.
 
 
 
