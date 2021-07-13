@@ -23,7 +23,8 @@
     To start the server, available in the backend folder. 
     From 'backend' run the command:
 
-    npm start
+    1- npm install
+    2- npm start
 
 This should run an instance of the server on port 3000 of the host machine.
 
