@@ -16,8 +16,7 @@ const app = express();
 
 
 // Connection to the MongoDB database
-mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_MP}@${process.env.DB_NAME}.nnoff.mongodb.net/sopekocko?retryWrites=true&w=majority`,
-    { useNewUrlParser: true,
+mongoose.connect(`mongodb+srv://Khaled_Issa:tfuM8ETFbqw2C7y@sopekocko.nnoff.mongodb.net/sopekocko?retryWrites=true&w=majority`,    { useNewUrlParser: true,
         useUnifiedTopology: true })
     .then(() => console.log('Connexion à MongoDB réussie !'))
     .catch(() => console.log('Connexion à MongoDB échouée !'));

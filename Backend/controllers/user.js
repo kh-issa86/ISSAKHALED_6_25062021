@@ -44,7 +44,7 @@ exports.login = (req, res, next) => {
               userId: user._id,
               token: jwt.sign( // we use jsonwebtoken's sign function to encode a new token;
                 { userId: user._id },// this token contains the user's ID as a payload (the data encoded in the token);
-                process.env.KEYTOKEN,
+                'h&^%yut876&^76',
                 { expiresIn: '24h' }// we set the validity period of the token to 24 hours. The user will therefore have to reconnect after 24 hours;
               )
             });
