@@ -35,7 +35,6 @@ exports.login = (req, res, next) => {
   cipher = crypto.createCipher('aes192', key)
   cipher.update(req.body.email, 'binary', 'hex')
   encodedString = cipher.final('hex')
-  console.log("Voici le FindOne = ", encodedString)
 // Compare the encrypted email with the one in the database
 User.findOne({ email: encodedString })
   .then(user => {
