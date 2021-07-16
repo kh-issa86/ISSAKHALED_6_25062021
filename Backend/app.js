@@ -10,11 +10,19 @@ const saucesRoutes = require("./routes/sauces");
 const userRoutes = require("./routes/user");
 var session = require("express-session"); // To ensure that cookies do not open your application to attacks
 const helmet = require("helmet"); // For security (protect sql & xms injection disable some headers)
+const rateLimit = require("express-rate-limit");
 
 // initialize the app variable which will contain 'express'
 const app = express();
 
-// Connection to the MongoDB database
+const limiter = rateLimit ({
+  max: 100,
+  windowMs: 60 * 60 * 1000,
+  message: 'Too many many requests from this IP, try again in an Hour '
+});
+app.use(limiter);
+
+// Connection to the MongoDB database1
 mongoose
   .connect(
     `mongodb+srv://${process.env.DB_USER}:${process.env.DB_MP}@${process.env.DB_NAME}.nnoff.mongodb.net/sopekocko?retryWrites=true&w=majority`,
