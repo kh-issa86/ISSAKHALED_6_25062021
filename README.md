@@ -1,4 +1,4 @@
-# ISSAKHALED_6_25062021 P6_Build a secure API for a food review app
+# P6_Build a secure API for a food review app
 
 [presentation]
 
